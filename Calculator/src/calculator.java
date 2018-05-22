@@ -31,7 +31,7 @@ public class calculator {
 		
 		
 		buttonPanel keypad = new buttonPanel();
-		main.add(keypad.getNums(), BorderLayout.WEST);
+		//main.add(keypad.getNums(), BorderLayout.WEST);
 		
 		operans operators = new operans();
 		main.add(operators.getOperands(), BorderLayout.EAST);
