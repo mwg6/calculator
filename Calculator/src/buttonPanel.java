@@ -22,12 +22,13 @@ public class buttonPanel extends calculator{
 					  
 				  Object source = j.getSource();
 				  numbers = calculator.getDispText() + (((JButton) source).getText());
-				  //Could just use dipslay.setText(numbers) but want to make sure the disp value is able to pass back proper value at all times
+				  
 				  
 				  calculator.setDispText(numbers);
 				  
 				  } 
 				} );
+			
 			nums.add(butts[i]);
 			
 		}
@@ -53,9 +54,58 @@ public class buttonPanel extends calculator{
 				calculator.setAnswer(0);
 			}
 				});
+		
+		JButton oParans = new JButton("(");
+		oParans.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent j){
+				String numbers = "";
+				  
+				  Object source = j.getSource();
+				  numbers = calculator.getDispText() + (((JButton) source).getText());
+				  
+				  
+				  calculator.setDispText(numbers);
+				  
+			}
+		});
+		
+		JButton cParans = new JButton(")");
+		oParans.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent j){
+				String numbers = "";
+				  
+				  Object source = j.getSource();
+				  numbers = calculator.getDispText() + (((JButton) source).getText());
+				  
+				  
+				  calculator.setDispText(numbers);
+				  
+			}
+		});
+		
+		JButton decimal = new JButton(".");
+		oParans.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent j){
+				String numbers = "";
+				  
+				  Object source = j.getSource();
+				  numbers = calculator.getDispText() + (((JButton) source).getText());
+				  
+				  
+				  calculator.setDispText(numbers);
+				  
+			}
+		});
 		nums.add(delete1);
 		nums.add(deleteAll);
+		nums.add(oParans);
+		nums.add(cParans);
+		nums.add(decimal);
 	}
+	
 	public static JPanel getNums(){
 		return nums;
 	}

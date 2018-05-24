@@ -1,4 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -21,17 +24,42 @@ public class calculator {
 		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		
-		display.setEditable(false);
-		
 		display.setEditable(false);
 		main.add(displayTop, BorderLayout.NORTH);
 		main.add(display);
 		
-		
+		main.setFocusable(true);
+		display.addKeyListener(new KeyListener(){
+			@Override
+			public void keyPressed(KeyEvent e){
+				System.out.println(e.getKeyCode());
+				if(e.getKeyCode() == KeyEvent.VK_ENTER){
+					operans.math(oper,calculator.getDispText());
+
+					calculator.setTopText("answer: " + calculator.getAnswer());
+					oper=-1;
+
+					calculator.setDispText("");
+					calculator.setAnswer(0);;
+					System.out.print("Success");
+				}
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
 		buttonPanel keypad = new buttonPanel();
-		//main.add(keypad.getNums(), BorderLayout.WEST);
+		main.add(keypad.getNums(), BorderLayout.WEST);
 		
 		operans operators = new operans();
 		main.add(operators.getOperands(), BorderLayout.EAST);
