@@ -26,7 +26,7 @@ public class operans extends calculator{
 			{
 		public void actionPerformed(ActionEvent j){
 			math(oper,calculator.getDispText());
-			
+			calculator.addHistory(calculator.getDispText() + "+");
 			calculator.setTopText(String.valueOf(calculator.getAnswer()));
 			//tells the next call to add its number
 			oper = 1;
@@ -41,7 +41,7 @@ public class operans extends calculator{
 	{
 public void actionPerformed(ActionEvent j){
 	math(oper,calculator.getDispText());
-	
+	calculator.addHistory(calculator.getDispText() + "-");
 	calculator.setTopText(String.valueOf(calculator.getAnswer()));
 	//tells the next call to add its number
 	oper = 2;
@@ -55,7 +55,7 @@ public void actionPerformed(ActionEvent j){
 	{
 public void actionPerformed(ActionEvent j){
 	math(oper,calculator.getDispText());
-	
+	calculator.addHistory(calculator.getDispText() + "*");
 	calculator.setTopText(String.valueOf(calculator.getAnswer()));
 	//tells the next call to add its number
 	oper = 3;
@@ -68,7 +68,7 @@ public void actionPerformed(ActionEvent j){
 	{
 public void actionPerformed(ActionEvent j){
 	math(oper,calculator.getDispText());
-	
+	calculator.addHistory(calculator.getDispText() + "/");
 	calculator.setTopText(String.valueOf(calculator.getAnswer()));
 	//tells the next call to add its number
 	oper = 4;
@@ -88,7 +88,7 @@ public void actionPerformed(ActionEvent j){
 public void actionPerformed(ActionEvent j){
 	
 	math(oper,calculator.getDispText());
-
+	calculator.addHistory(calculator.getDispText() + "=" +calculator.getAnswer() + "\n");
 	calculator.setTopText("answer: " + calculator.getAnswer());
 	oper=-1;
 

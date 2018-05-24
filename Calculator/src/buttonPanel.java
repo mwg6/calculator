@@ -71,7 +71,7 @@ public class buttonPanel extends calculator{
 		});
 		
 		JButton cParans = new JButton(")");
-		oParans.addActionListener(new ActionListener()
+		cParans.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent j){
 				String numbers = "";
@@ -86,7 +86,7 @@ public class buttonPanel extends calculator{
 		});
 		
 		JButton decimal = new JButton(".");
-		oParans.addActionListener(new ActionListener()
+		decimal.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent j){
 				String numbers = "";

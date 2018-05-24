@@ -14,10 +14,15 @@ public class calculator {
 	public static String dispT ="";
 	public static JTextField display = new JTextField(20);
 	public static JTextField displayTop = new JTextField(20);
+	public static JTextField historyPane = new JTextField(2000);
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JFrame main = new JFrame();
+		JFrame history = new JFrame();
+		
+		history.setVisible(true);
+		history.add(historyPane);
 		
 		main.setVisible(true);
 		main.setSize(400, 400);
@@ -28,7 +33,7 @@ public class calculator {
 		main.add(displayTop, BorderLayout.NORTH);
 		main.add(display);
 		
-		main.setFocusable(true);
+		display.setFocusable(true);
 		display.addKeyListener(new KeyListener(){
 			@Override
 			public void keyPressed(KeyEvent e){
@@ -86,5 +91,8 @@ public class calculator {
 	}
 	public static void setAnswer(float num){
 		answer=num;
+	}
+	public static void addHistory(String text){
+		historyPane.setText(historyPane.getText()+text); 
 	}
 }
