@@ -131,6 +131,7 @@ public void actionPerformed(ActionEvent j){
 public static void math(int oper, String text) {
 	if(oper ==-1){
 		//this is the equals case
+		calculator.setAnswer(Float.parseFloat(text));
 	}
 	else if(oper==0){
 		calculator.setAnswer(calculator.getAnswer() + Float.parseFloat(text));
