@@ -1,46 +1,67 @@
+import java.util.Arrays;
 
 public class pemdasLogic {
 	float trueAnswer;
-	int countParans = 0;
+	int countOParans = 0;
+	int countCParans = 0;
 	int paranLoc = 0;
+	boolean containsOParans = false;
+	boolean containsCParans = false;
 	
 	
 	public float pemdasCalc(String equation){
-		//count all parantheses
-		if(equation.contains("("))
-				{
-			for(int i =0; i<equation.length(); i++)
-			{
-				if(equation.charAt(i)=='('){
-					countParans++;
-				}
-				else{
-					//do nothing, cycle
-				}
+		char[] a = equation.toCharArray();
+		System.out.println(Arrays.toString(a));
+		System.out.println(a.length);
+		
+		//Solve parans first, then S/A, then D/M/%, then E
+		for(char item:a){
+			if(item=='('){
+				containsOParans = true;
+				countOParans++;
 			}
-			//retrieve indexes of parantheses
-			int[] paranInd = new int[countParans*2];
-			
-			for(int i =0; i<equation.length(); i++){
-				if(equation.charAt(i)=='('){
-					paranInd[paranLoc] = i;
-					paranLoc++;
-				}
-				else if(equation.charAt(i)==')'){
-					paranInd[paranLoc] = i;
-					paranLoc++;
-				}
-				else{
-					
-				}
+			else if(item==')'){
+				containsCParans = true;
+				countCParans++;
+			}
 		}
+		if(countOParans!=countCParans){
+			System.out.println("Error: parantheses not matching");
+		}
+		else{
 			
 		}
-		
-		
-		//solve parantheses areas first
-		
-		
 		return trueAnswer;
+	}
+	public String[] getParans(String equationP){
+		String[] parans = new String[countCParans];
+		int paransLoc = 0;
+		int[] indexOParans = new int[countOParans];
+		int locOParans = 0;
+		int[] indexCParans = new int[countCParans];
+		int locCParans = 0;
+		//first locate the amtching pairs
+		char[] equP = equationP.toCharArray();
+		
+		for (int i =0;i< equP.length;i++){
+			if(equP[i] == '('){
+				indexOParans[locOParans]=i;
+				locOParans++;
+			}
+			else if(equP[i] == ')'){
+				indexCParans[locCParans]=i;
+				locCParans++;
+			}
+		}
+		//now to isolate the parantheses areas
+		for(int i = 0; i<countOParans;i++){
+			parans[paransLoc] = equationP.substring(indexOParans[indexOParans.length-(1+i)], indexCParans[i+1]);
+		}
+		return parans;
+	}
+	public static void main(String[] args){
+		pemdasLogic a = new pemdasLogic();
+		System.out.println(a.pemdasCalc("(30+3)-2"));
+		System.out.println(Arrays.toString(a.getParans("(30+3)-2")));
 	}
 }
