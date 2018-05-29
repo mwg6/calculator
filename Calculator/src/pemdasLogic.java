@@ -45,23 +45,32 @@ public class pemdasLogic {
 		
 		for (int i =0;i< equP.length;i++){
 			if(equP[i] == '('){
+				
 				indexOParans[locOParans]=i;
 				locOParans++;
 			}
 			else if(equP[i] == ')'){
+				System.out.println(i);
 				indexCParans[locCParans]=i;
 				locCParans++;
 			}
 		}
 		//now to isolate the parantheses areas
 		for(int i = 0; i<countOParans;i++){
-			parans[paransLoc] = equationP.substring(indexOParans[indexOParans.length-(1+i)], indexCParans[i+1]);
+			
+			parans[i] = equationP.substring(indexOParans[i]+1, indexCParans[i]);
+		}
+		
+		//Having an array of the isolated parens strings, evaluate those first
+		//count operations
+		for(int i =0; i<parans.length;i++){
+			//Within here we want to isolate the sequence of numbers and operations separately, then use them in pemdas order
 		}
 		return parans;
 	}
 	public static void main(String[] args){
 		pemdasLogic a = new pemdasLogic();
-		System.out.println(a.pemdasCalc("(30+3)-2"));
-		System.out.println(Arrays.toString(a.getParans("(30+3)-2")));
+		System.out.println(a.pemdasCalc("(30+3)-(2)"));
+		System.out.println(Arrays.toString(a.getParans("(30+3)-(2)")));
 	}
 }
