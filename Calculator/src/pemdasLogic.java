@@ -56,9 +56,21 @@ public class pemdasLogic {
 			}
 		}
 		//now to isolate the parantheses areas
+		
+		//diagnostics stuff, to be deleted
+		System.out.println(Arrays.toString(indexOParans));
+		System.out.println(Arrays.toString(indexCParans));
+		
 		for(int i = 0; i<countOParans;i++){
 			
-			parans[i] = equationP.substring(indexOParans[i]+1, indexCParans[i]);
+			//diagnostic stuff, to be deleted
+			System.out.println("countOParans Modified " + (countOParans-1-i));
+			System.out.println("indexOParans Modified " + indexOParans[(countOParans-1-i)]);
+			System.out.println("countOParans Modified " + (i));
+			System.out.println("indexOParans Modified " + indexCParans[(i)]);
+			System.out.println(equationP.substring(6, 9));
+			
+			parans[i] = equationP.substring(indexOParans[(countOParans-1-i)]+1, indexCParans[i]);
 		}
 		
 		//Having an array of the isolated parens strings, evaluate those first
@@ -70,7 +82,9 @@ public class pemdasLogic {
 	}
 	public static void main(String[] args){
 		pemdasLogic a = new pemdasLogic();
-		System.out.println(a.pemdasCalc("(30+3)-(2)"));
-		System.out.println(Arrays.toString(a.getParans("(30+3)-(2)")));
+		String test1 ="(30+3)-(2)";
+		String test2 ="((30+3))-(2)";
+		System.out.println(a.pemdasCalc(test2));
+		System.out.println(Arrays.toString(a.getParans(test2)));
 	}
 }
