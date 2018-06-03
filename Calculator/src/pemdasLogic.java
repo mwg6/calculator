@@ -80,6 +80,36 @@ public class pemdasLogic {
 		}
 		return parans;
 	}
+	public float handleEMDAS(String equation){
+		float answer=-1;
+		int numOperations;
+		String nums;
+		
+		char[] all = equation.toCharArray();
+		
+		//will create a string of numbers and operations
+	    final StringBuilder numBuild = new StringBuilder(equation.length() );
+	    final StringBuilder operationsBuild = new StringBuilder(equation.length() );
+	    
+	    for(int i = 0; i < equation.length(); i++){
+	        final char c = equation.charAt(i);
+	        //will seek out operations
+	        if(c > 42 && c < 45||c==47){
+	        	//now located at the "+" of 3+3
+	            numBuild.append(c);
+	        }
+	        else{
+	        	//this will also put any erroneous chars in operations. needs fixing later
+	        	operationsBuild.append(c);
+	        }
+	        
+	    }
+	    nums = numBuild.toString();
+
+		}
+		
+		return answer;
+	}
 	public static void main(String[] args){
 		pemdasLogic a = new pemdasLogic();
 		String test1 ="(30+3)-(2)";
